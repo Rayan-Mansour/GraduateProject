@@ -1,9 +1,4 @@
 
-.header{
-    background-color: #778899
-    ;
-    
-}
 
 .logo-brand{
     margin-right: 10px;
@@ -14,6 +9,7 @@
 
     font-size: 30px;
 }
+
 
 #btn1{
 
@@ -27,13 +23,26 @@
     padding-inline: 20px;
 }
 
-.display-4{
+.h11{
 
-    color: aliceblue;
+    color: black;
+    text-align: center;
     
 }
 
 .lead{
     color: rgb(0, 53, 0);
     font-style: italic;
+    text-align: center;
+}
+
+html { 
+        background: url(pexels-burst-374006.jpg) no-repeat center fixed; 
+        height: 100%;
+        background-size:cover;
+      }
+
+.header{
+
+    background: fixed;
 }
