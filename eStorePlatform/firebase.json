@@ -1,10 +1,10 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "functions/public",
     "rewrites": [
       {
         "source": "**",
-        "functions": "app"
+        "function": "app"
       }
     ]
   }

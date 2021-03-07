@@ -2,38 +2,59 @@
 // must be listed before other Firebase SDKs
 // jshint eversion:6
 // // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
 
 const functions = require("firebase-functions");
-const firebase = require("firebase/app");
-const express = require("express");
-const app = express();
+// // https://firebase.google.com/docs/functions/write-firebase-functions
 
+const firebase = require("firebase/app");
+var firebase1 = require('firebase');
+const express = require("express");
+const path = require('path');
+const bodyparser = require("body-parser");
+const app = express();
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
 require("firebase/auth");
 require("firebase/firestore");
 require("firebase/database");
 
 
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const Config = {
-    apiKey: "AIzaSyA-v2ebt30MEp9nU2PBtdGKwYPYu41Hioo",
-    authDomain: "estore-platform.firebaseapp.com",
-    databaseURL: "https://estore-platform-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "estore-platform",
-    storageBucket: "estore-platform.appspot.com",
-    messagingSenderId: "663183096844",
-    appId: "1:663183096844:web:4559c7a937e08ec647c229",
-    measurementId: "G-P78DELXHE2"
-  };
+var firebaseConfig = {
+  apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
+  authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+  databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "estoreplatform-2d6f7",
+  storageBucket: "estoreplatform-2d6f7.appspot.com",
+  messagingSenderId: "1004459441040",
+  appId: "1:1004459441040:web:47cc6520c489557ed81115",
+  measurementId: "G-JZWLD0NP2F"
+};
 
-  firebase.initializeApp(Config);
+  firebase1.initializeApp(firebaseConfig);
 
-  const database = firebase.database();
+  let database = firebase.database();
 
-  app.get("/", (req, res) => {
+  app.get('/', (req, res) => {
 
-    res.send("Hello");
+    
+    res.sendFile(path.join(__dirname+'/public/index.html'));
+  })
+  app.get("/signup", (req, res) => {
+
+    
+    res.sendFile(path.join(__dirname +'/public/sign_up.html'));
+    
 
   });
 
+  app.get("/login", (req, res) => {
+
+    
+    res.sendFile(path.resolve(__dirname+'/public/sign_in.html'));
+
+  });
+
+ app.listen(3000);
  exports.app = functions.https.onRequest(app);
