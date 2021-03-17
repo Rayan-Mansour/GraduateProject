@@ -15,8 +15,6 @@ body
     align-items: center;
     min-height: 100vh;
     background: #fff;
-    
-    
 }
 
 .topnav {
@@ -24,6 +22,7 @@ body
     margin-block-end: 80vh;
     z-index: 1000;
     padding-right: 100px;
+    padding-left: 100px;
   }
   
   /* Style the links inside the navigation bar */
@@ -48,12 +47,7 @@ body
     color: white;
   }
 
-.sign{
-    float: left;
-}
-.sign1{
-    float: left;
-}
+
 .container
 {
     position: absolute;

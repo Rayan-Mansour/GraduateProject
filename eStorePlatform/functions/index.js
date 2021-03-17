@@ -40,7 +40,7 @@ var firebaseConfig = {
   app.get('/', (req, res) => {
 
     
-    res.sendFile(path.join(__dirname+'/public/index.html'));
+    res.sendFile(path.join(__dirname+'/public/TEST.html'));
   })
   app.get("/signup", (req, res) => {
 
