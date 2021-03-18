@@ -24,13 +24,13 @@ require("firebase/database");
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
   apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
-  authDomain: "estoreplatform-2d6f7.firebaseapp.com",
-  databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "estoreplatform-2d6f7",
-  storageBucket: "estoreplatform-2d6f7.appspot.com",
-  messagingSenderId: "1004459441040",
-  appId: "1:1004459441040:web:47cc6520c489557ed81115",
-  measurementId: "G-JZWLD0NP2F"
+    authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+    databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "estoreplatform-2d6f7",
+    storageBucket: "estoreplatform-2d6f7.appspot.com",
+    messagingSenderId: "1004459441040",
+    appId: "1:1004459441040:web:05cd7d03073c8549d81115",
+    measurementId: "G-2V5D2MQ7R3"
 };
 
   firebase1.initializeApp(firebaseConfig);
@@ -40,8 +40,10 @@ var firebaseConfig = {
   app.get('/', (req, res) => {
 
     
-    res.sendFile(path.join(__dirname+'/public/TEST.html'));
-  })
+    res.sendFile(path.join(__dirname+'/public/index.html'));
+
+  });
+
   app.get("/signup", (req, res) => {
 
     
@@ -53,9 +55,10 @@ var firebaseConfig = {
   app.get("/login", (req, res) => {
 
     
-    res.sendFile(path.resolve(__dirname+'/public/sign_in.html'));
+    res.sendFile(path.join(__dirname+'/public/sign_in.html'));
 
   });
 
- app.listen(3000);
- exports.app = functions.https.onRequest(app);
+
+ exports.firebase1 = functions.https.onRequest(app);
+
