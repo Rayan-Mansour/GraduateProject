@@ -7,14 +7,14 @@ const functions = require("firebase-functions");
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 
 const firebase = require("firebase/app");
-var firebase1 = require('firebase');
+var firebase1 = require("firebase");
 const express = require("express");
-const path = require('path');
+const path = require("path");
 const bodyparser = require("body-parser");
 const app = express();
 
 app.use(bodyparser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 require("firebase/auth");
 require("firebase/firestore");
 require("firebase/database");
@@ -40,14 +40,14 @@ var firebaseConfig = {
   app.get('/', (req, res) => {
 
     
-    res.sendFile(path.join(__dirname+'/public/index.html'));
+    res.sendFile(path.join(__dirname+"/public/index.html"));
 
   });
 
   app.get("/signup", (req, res) => {
 
     
-    res.sendFile(path.join(__dirname +'/public/sign_up.html'));
+    res.sendFile(path.join(__dirname +"/public/sign_up.html"));
     
 
   });
@@ -55,9 +55,15 @@ var firebaseConfig = {
   app.get("/login", (req, res) => {
 
     
-    res.sendFile(path.join(__dirname+'/public/sign_in.html'));
+    res.sendFile(path.join(__dirname+"/public/sign_in.html"));
 
   });
+
+  app.post('/login', (req, res) =>{
+
+    res.sendFile(path.join(__dirname +"/public/client_dashboard.html"));
+
+  })
 
 
  exports.firebase1 = functions.https.onRequest(app);

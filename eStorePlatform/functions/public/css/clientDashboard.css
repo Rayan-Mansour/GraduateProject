@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+*
+{
+    
+    
+    font-family: 'Roboto', sans-serif;
+}
+
+body
+{
+    background-color: rgb(250, 255, 255);
+    overflow: hidden;
+    display: flex;
+    min-height: 100vh;
+
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 250px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0px; /* Stay at the top */
+    left: 0;
+    background-color: rgb(228, 228, 228); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    border-right: rgb(180, 180, 180) solid 1px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 30px 8px 30px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #5e5d5d;
+    display: block;
+    transition: 0.3s;
+    border-bottom: solid 0.2px #b1b1b1;
+    
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #000000;
+    background-color: rgb(192, 192, 192);
+  }
+  
+
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: 0.5s;
+    padding: 20px;
+    padding-left: 16em;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .sidenav .btnn
+  {
+      bottom: 0px;
+      left: 0;
+      margin-top: 13vh;
+      margin-left: 2vw;
+      padding: 20px 60px;
+      background-color: #5e5d5d;
+      border-radius: 3px;
+      color: #ffffff;
+      border: none;
+  }
+
+  .sidenav .btnn:hover
+  {
+      background-color: #222222;
+  }
+
+  .x
+  {
+      margin-top: 2em;
+      margin-bottom: 3em;
+      margin-left: 2em;
+      
+  }
