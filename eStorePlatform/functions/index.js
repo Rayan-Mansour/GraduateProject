@@ -67,4 +67,3 @@ var firebaseConfig = {
 
 
  exports.firebase1 = functions.https.onRequest(app);
-
