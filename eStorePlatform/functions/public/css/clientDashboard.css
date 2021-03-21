@@ -8,11 +8,11 @@
 
 body
 {
-    background-color: rgb(250, 255, 255);
+    background-color: rgb(44, 44, 44);
     overflow: hidden;
     display: flex;
     min-height: 100vh;
-
+    z-index: 1000;
 }
 
 /* The side navigation menu */
@@ -34,7 +34,7 @@ body
   .sidenav a {
     padding: 30px 8px 30px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: #5e5d5d;
     display: block;
     transition: 0.3s;
@@ -66,7 +66,7 @@ body
   {
       bottom: 0px;
       left: 0;
-      margin-top: 13vh;
+      margin-top: 8vh;
       margin-left: 2vw;
       padding: 20px 60px;
       background-color: #5e5d5d;
@@ -80,10 +80,10 @@ body
       background-color: #222222;
   }
 
-  .x
+  .storename
   {
-      margin-top: 2em;
-      margin-bottom: 3em;
+      margin-top: 3px;
+      margin-bottom: 2px;
       margin-left: 2em;
       
   }
