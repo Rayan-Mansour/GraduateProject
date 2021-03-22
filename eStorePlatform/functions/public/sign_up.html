@@ -15,32 +15,32 @@
     <body>
         <div class="loginbox">
             <h1>Sign up</h1>
-            <form method="post">
+            <form action="/signup" method="POST">
                 <p>First Name</p>
-                <input type="text" name="Username" placeholder="Enter your first name">
+                <input type="text" name="firstname" id="first" placeholder="Enter your first name">
                 <p>last Name</p>
-                <input type="text" name="Username" placeholder="Enter your last name">
+                <input type="text" name="lastname" id="last" placeholder="Enter your last name">
 
                 <p>Password</p>
-                <input type="password" name="password" placeholder="Enter your password">
+                <input type="password" name="password" id="passsignup" placeholder="Enter your password">
                 <p>Confirm Password</p>
-                <input type="password" name="password" placeholder="Confirm your password">
+                <input type="password" name="confirmPassword" id="passconfirm" placeholder="Confirm your password">
 
                 <p>Email</p>
-                <input type="email" name="password" placeholder="Enter your email">
+                <input type="email" name="email" id="emailsignup" placeholder="Enter your email">
                 <p>Phone number</p>
-                <input type="tel" name="password" placeholder="Enter your number">
+                <input type="tel" name="telephone" id="tele" placeholder="Enter your phone number">
 
                 <p>Store name</p>
-                <input type="text" name="password" placeholder="Enter your Store name">
+                <input type="text" name="store" id="storename" placeholder="Enter your Store name">
 
-                <input type="submit" name="sign up" value="Sign up">
+                <input type="submit" name="sign up" id="btnsignup" value="Sign up">
                 <input type="checkbox" name="checkbox" id="checkbox-1">
                 <p class="agree">I agree all statements in  <a href="#" class="term-service">Terms of service</a></p>
-                <a href="sign_in.html" class="signin">have an account?</a>
+                <a href="/login" class="signin">have an account?</a>
                 
             </form>
         </div>
-            <script src="" async defer></script>
+            <script src="../auth.js"></script>
     </body>
 </html>
