@@ -7,6 +7,7 @@ const bodyparser = require('body-parser');
 router.use(bodyparser.urlencoded({extended: true}));
 router.use(bodyparser.json());
 
+
 const auth = firebase.auth();
 
 // const firstnametxt = document.getElementById('first');
@@ -55,7 +56,7 @@ router.post('/signup', (req, res) => {
         res.redirect('/signup');
     }
  
-    res.redirect('/');
+    res.redirect('/signedupsuccessfully');
     
 });
 
