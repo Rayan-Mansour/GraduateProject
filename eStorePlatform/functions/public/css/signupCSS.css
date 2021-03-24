@@ -8,12 +8,13 @@ body{
     min-height: 100vh;
     background: #fff;
     font-family: sans-serif;
+    
 }
 
 .loginbox{
 
     width: 620px;
-    height: 820px;
+    height: 750px;
     background: #fff;
     color: rgb(0, 0, 0);
     top: 50%;
