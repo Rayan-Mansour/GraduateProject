@@ -31,29 +31,35 @@ router.post('/signup', (req, res) => {
     const storename = req.body.store;
 
     var id = 0;
-    const dateSignup = Date.UTC;
-    if(pass == req.body.confirmPassword && pass.length <= 6){
+    
+    const dateSignup = Date.now();
+
+    if(pass === req.body.confirmPassword) {
         
         const firebaseRef = firebase.database().ref().child('users');
         
         firebaseRef.child(storename).set({
+            ID: id++,
             FirstName: firstname,
             LastName: lastname,
             Password: pass,
             Email: email,
             telephone: tele,
-            StoreName: storename
+            StoreName: storename,
+            Datesigned: dateSignup
         });
 
         firebaseRef.child(storename).push();
+        
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
 
-       const promise = auth.createUserWithEmailAndPassword(email, pass);
-       promise.catch(e => console.log(e.message));
     }
 
     else {
       
         res.redirect('/signup');
+        res.render(window.alert('password less than 6 digits'));
     }
  
     res.redirect('/signedupsuccessfully');
