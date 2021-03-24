@@ -98,8 +98,8 @@ body
     visibility: hidden;
     width: 450px;
     height: 620px;
-    background: #393b44;
-    color: #d6e0f0;
+    background: #fff;
+    color: black;
     top: 45%;
     left: 50%;
     position: absolute;
@@ -107,12 +107,13 @@ body
     box-sizing: border-box;
     padding: 70px 30px;
     margin-top: 38px;
-    box-shadow:10px 5px 10px  #7e7d7d;
+    box-shadow:5px 10px 50px  rgba(0, 0, 0, 0.2);
     border-radius: 15px;
   }
   .addBox h1{
     text-align: center;
   }
+
   .addBox .bttn0{
     border-radius: 5px 5px ;
     background-color: #f1f3f8;
