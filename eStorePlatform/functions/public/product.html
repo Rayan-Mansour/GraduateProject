@@ -30,20 +30,22 @@
       
         <div class="addBox" id="addBox">
           <h1>Add Product</h1>
-          <form method="post">
+          <form method="post" id="submit">
               <p>Name</p>
-              <input type="text" name="productName" placeholder="Enter product name">
+              <input type="text"id = "pName" name="productName" placeholder="Enter product name" required>
               <p>Price</p>
-              <input type="number" name="productPrice" placeholder="Enter product price">
+              <input type="number"id = "pPrice" name="productPrice" placeholder="Enter product price" required>
               <p>Quantity</p>
-              <input type="number" name="productQuantity" placeholder="Enter product quantity">
+              <input type="number" id ="pQuantity" name="productQuantity" placeholder="Enter product quantity" required>
               <p>Description</p>
-              <input class="desc" type="text" name="description" placeholder="Enter product description">
+              <input class="desc" id = "desc" type="text" name="description" placeholder="Enter product description" required>
               <p>Upload Product image</p>
               <input type="file" name="img" accept="image/*">
+              <h6 hidden id = "h6">error</h6>
               <input type="submit" name="add" value="Add" class="bttn0">
              <!-- <input type="submit"name="cancel" value="Cancel" class="bttn1">-->
-             <button onclick="cancel()" type="button" class="bttn1" id="bttn1"></i> Cancel</button>
+             <button onclick="cancel()" type="button" class="bttn1" id="bttn1"> Cancel</button>
+
       
           </form>
       </div>
