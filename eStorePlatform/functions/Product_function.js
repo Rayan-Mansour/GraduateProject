@@ -3,6 +3,7 @@ var pPrice = document.getElementById("pPrice");
 var pQuantity = document.getElementById("pQuantity");
 var pDesc = document.getElementById("desc");
 const sub = document.getElementById("submit");
+
 sub.addEventListener("submit" , (e) =>{
   if(pPrice.value <=0 || pQuantity.value <=0){
     alert("negative value not accepted");
