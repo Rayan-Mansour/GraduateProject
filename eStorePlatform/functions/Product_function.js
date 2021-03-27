@@ -5,6 +5,8 @@ var pDesc = document.getElementById("desc");
 var pImg = document.getElementById("img");
 const sub = document.getElementById("submit");
 
+
+
 sub.addEventListener("submit" , (e) =>{
   if(pPrice.value <=0 || pQuantity.value <=0){
     alert("negative value not accepted");
@@ -13,6 +15,7 @@ sub.addEventListener("submit" , (e) =>{
  else
  var product = new Object();
  product.name = pName;
+ alert(pName.value);
  
 })
 //var products = new Array();

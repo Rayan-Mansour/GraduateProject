@@ -142,3 +142,24 @@ body
     
   
 }
+#lgDemo {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 5px;
+}
+#lgDemo .item {
+  padding-left: 200px;
+  padding-top: 200px;
+  padding-right: 200px;
+  padding-bottom: 200px;
+  border: 1px solid #ddd;
+  background-color: gray;
+}
+
+
+
+/* (B) TRANSFORM INTO GRID VIEW */
+#lgDemo{ grid-template-columns: 50% 50%; }
+body {
+  overflow: scroll; /* Show scrollbars */
+}
