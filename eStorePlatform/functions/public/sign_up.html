@@ -17,25 +17,25 @@
             <h1>Sign up</h1>
             <form action="/signup" method="POST">
                 <p>First Name</p>
-                <input type="text" name="firstname" id="first" placeholder="Enter your first name">
+                <input type="text" name="firstname" id="first" placeholder="Enter your first name" required>
                 <p>last Name</p>
-                <input type="text" name="lastname" id="last" placeholder="Enter your last name">
+                <input type="text" name="lastname" id="last" placeholder="Enter your last name" required>
 
                 <p>Password</p>
-                <input type="password" name="password" id="passsignup" placeholder="Enter your password">
+                <input type="password" name="password" id="passsignup" placeholder="Enter your password" required>
                 <p>Confirm Password</p>
-                <input type="password" name="confirmPassword" id="passconfirm" placeholder="Confirm your password">
+                <input type="password" name="confirmPassword" id="passconfirm" placeholder="Confirm your password" required>
 
                 <p>Email</p>
-                <input type="email" name="email" id="emailsignup" placeholder="Enter your email">
+                <input type="email" name="email" id="emailsignup" placeholder="Enter your email" required>
                 <p>Phone number</p>
-                <input type="tel" name="telephone" id="tele" placeholder="Enter your phone number">
+                <input type="tel" name="telephone" id="tele" placeholder="Enter your phone number" required>
 
                 <p>Store name</p>
-                <input type="text" name="store" id="storename" placeholder="Enter your Store name">
+                <input type="text" name="store" id="storename" placeholder="Enter your Store name" required>
 
-                <input type="submit" name="sign up" id="btnsignup" value="Sign up">
-                <input type="checkbox" name="checkbox" id="checkbox-1">
+                <input onclick="Signup()" type="submit" name="sign up" id="btnsignup" value="Sign up" required>
+                <input type="checkbox" name="checkbox" id="checkbox-1" required>
                 <p class="agree">I agree all statements in  <a href="#" class="term-service">Terms of service</a></p>
                 <a href="/login" class="signin">have an account?</a>
                 

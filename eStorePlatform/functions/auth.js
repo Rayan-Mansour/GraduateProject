@@ -9,6 +9,7 @@ const db = require('./database');
 router.use(bodyparser.urlencoded({extended: true}));
 router.use(bodyparser.json());
 
+
 const auth = firebase.auth();
 
 // const firstnametxt = document.getElementById('first');
@@ -62,9 +63,10 @@ router.post('/signup', (req, res) => {
     else {
       
         res.redirect('/signup');
+        res.render(window.alert('password less than 6 digits'));
     }
  
-    res.redirect('/');
+    res.redirect('/signedupsuccessfully');
     
 });
 

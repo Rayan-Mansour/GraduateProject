@@ -12,7 +12,7 @@ body
     overflow: hidden;
     display: flex;
     min-height: 100vh;
-    
+    text-align: center;
 }
 
 h1
@@ -23,7 +23,7 @@ h1
     justify-content: center;
     align-items: center;
     margin-top: 350px;
-    margin-left: -300px;
+    margin-left: -100px;
 }
 
 h2
@@ -32,5 +32,5 @@ h2
     letter-spacing: 0.2em;
     font-weight: 400;
     text-transform: uppercase;
-    margin-left: 30em;
+    
 }

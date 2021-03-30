@@ -15,7 +15,7 @@ const router = require('./auth');
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
-app.use('', router);
+app.use('/', router);
 
 app.get('/', (req, res) => {
 
@@ -53,6 +53,13 @@ app.get('/signup', (req, res) => {
 
     
   res.sendFile(path.join(__dirname+"/public/sign_up.html"));
+
+});
+
+app.get('/signedupsuccessfully', (req,res) =>{
+
+
+  res.sendFile(path.join(__dirname+"/public/signedupsuccessfully.html"));
 
 });
 

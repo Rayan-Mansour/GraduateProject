@@ -1,19 +1,21 @@
 body{
 
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: #fff;
     font-family: sans-serif;
+    
 }
 
 .loginbox{
 
     width: 620px;
-    height: 820px;
+    height: 830px;
+    margin-top: 15px;
     background: #fff;
     color: rgb(0, 0, 0);
     top: 50%;
