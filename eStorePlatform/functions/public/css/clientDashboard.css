@@ -137,10 +137,27 @@ body
   border-radius: 5px 5px ;
     background-color: #f1f3f8;
     
+    margin-top: -28px;
     margin-right:-180px;
-    margin-left: -180px;
+    margin-left: 180px;
     
   
+}
+.bttn0 , .bttn1{
+  display: block;
+  border: none;
+  background: transparent;
+  color: #000000;
+  font-size: 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+  transition: background 1s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bttn0:hover , .bttn1:hover{
+  background-color: #000000;
+  color: #fff;
 }
 #lgDemo {
   display: grid;
