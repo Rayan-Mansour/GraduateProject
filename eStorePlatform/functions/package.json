@@ -16,10 +16,14 @@
   "dependencies": {
     "animejs": "^3.2.1",
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",
     "firebase": "^8.2.9",
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.11.0",
+    "htmlparser2": "^6.0.1",
+    "jquery": "^3.6.0",
+    "jsdom": "^16.5.2",
     "nodemon": "^2.0.7",
     "requirejs": "^2.3.6"
   },
