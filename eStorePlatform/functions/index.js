@@ -9,8 +9,9 @@ const express = require("express");
 const path = require("path");
 const bodyparser = require("body-parser");
 const app = express();
-const firebase = require('./firebase').default;
+const firebase = require('./firebase');
 const router = require('./auth');
+
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
@@ -22,6 +23,24 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+"/public/index.html"));
 
 });
+
+
+function FetchAll() {
+  firebase.database().ref('users').once('value', (snapshot) => {
+  snapshot.forEach(
+    (ChildSnapshot) => {
+
+     app.get('/' + ChildSnapshot.val().StoreName,(req, res) => {
+
+     
+  res.sendFile(path.join(__dirname+"/public/store_page.html"));
+
+                    });
+    }) 
+});
+}
+
+FetchAll();
 
 app.get('/login', (req, res) => {
 

@@ -6,7 +6,7 @@ var firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/firestore");
 require("firebase/database");
-
+require("firebase/storage");
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,7 +21,6 @@ var firebaseConfig = {
     measurementId: "G-2V5D2MQ7R3"
 };
 
-  firebase.initializeApp(firebaseConfig);
+  firebase.default.initializeApp(firebaseConfig);
 
-
-  module.exports = firebase;
+  module.exports = firebase.default;
