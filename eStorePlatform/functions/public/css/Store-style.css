@@ -15,6 +15,10 @@ body{
     padding: 20px;
 }
 
+.nav-bar img{
+    margin-top: 20px;
+}
+
 nav{
     flex: 1;
     text-align: right;
@@ -228,6 +232,11 @@ footer li:hover, a:hover{
     color: #ececec;
 }
 
+#cartSec{
+
+    cursor: pointer;
+}
+
 /* media */
 @media only screen and (max-width: 800px){
     nav ul{
@@ -268,6 +277,10 @@ footer li:hover, a:hover{
         flex-basis: 100%;
 
     }
+
+    .cart-info p{
+        display: none;
+    }
 }
 
 .cart-page{
@@ -277,4 +290,57 @@ footer li:hover, a:hover{
 table{
     width: 100%;
     border-collapse: collapse;
+}
+
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+th{
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #303030;
+    font-weight: normal;
+}
+
+td input{
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+}
+
+td{
+
+    padding: 10px 5px;
+}
+
+td a{
+    color: #9b0b0b;
+}
+
+.cart-info img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table{
+    border-top: 3px solid #303030;
+    width: 100%;
+    max-width: 350px;
+}
+
+td:last-child{
+    text-align: right;
+}
+
+th:last-child{
+    text-align: right;
 }
