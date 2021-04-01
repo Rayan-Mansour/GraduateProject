@@ -28,9 +28,25 @@
      
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <div id="main">
+        <button onclick="AddCoupon()" type="button" class="addprod" id="addprod"><i class="far fa-plus-square"></i> Add Coupon</button>
+        <div class="addCoupon" id="AddCoupon">
+            <h1>Add coupon</h1>
+            <form method="post" id="submit">
+                <label>Enter coupon percentage (without % mark)</label>
+                <input type="number" id = "percentage" name="percentage" placeholder="e.g. 20" required>
+                <label>Enter coupon code</label>
+                <input type="text" id = "code" name="code" placeholder="e.g. AAA" required>
+               
+                <input type="submit" name="add" value="Add" class="bttn3">
+               <!-- <input type="submit"name="cancel" value="Cancel" class="bttn1">-->
+               <button onclick="cancel()" type="button" class="bttn4" id="bttn4"> Cancel</button>
+  
         
+            </form>
+        </div>
+  
       </div>
     
-   <script src="../public/Customers.js"></script>
+    <script src="../coupon.js"></script>
 </body>
 </html>
