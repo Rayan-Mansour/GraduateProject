@@ -82,11 +82,10 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com", //replace with your email provider
   port: 587,
   auth: {
-    user: 'rveercee.15@gmail.com',
-    pass: 'hgfrld+911',
+    user: 'sewwrg@gmail.com',
+    pass: 'hgfrld911',
   },
 });
-
 
 // verify connection configuration
 transporter.verify(function (error, success) {
