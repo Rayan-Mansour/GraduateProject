@@ -269,8 +269,13 @@ table tr:last-of-type{
   background-color: #000000;
   color: #fff;
 }
-.deletebtn{
-color: red;
-border-radius: 10px;
-
+.deletebtn {
+  color: lightcoral;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.deletebtn:hover{
+    background-color: lightcoral;
+    color: #000000;
 }
