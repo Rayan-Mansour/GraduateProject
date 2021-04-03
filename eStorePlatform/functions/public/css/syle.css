@@ -85,3 +85,28 @@ body
     box-shadow: 5px 10px 22px rgba(19, 19, 19, 0.2);
 }
 
+
+@media only screen and (max-width: 600px){
+
+  .topnav{
+    text-align: center;
+    justify-content: center;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .topnav a{
+    font-size: 8px;
+  }
+
+  .headline{
+    font-size: 20px;
+  }
+
+  .block{
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 60px;
+  }
+}

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tt">Store Name</title>
+    <title id="tt">Cart</title>
     <link rel="stylesheet" href="./css/Store-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,72 +21,90 @@
             <nav>
                 <ul id="menuItem">
                 <li><a href="#" id="home">Home</a></li>
-                <li><a href="/contactus" id="cont">Contact</a></li>
+                <li><a href="#" id="cont">Contact</a></li>
                 <li><a href="#" id="signin">Sign in</a></li>
             </ul>
             </nav>
-            <img id="cartSec" onclick="openCart()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px;">
             <img class="menu-icon" onclick="menutogg()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fmenu.png?alt=media&token=ff17647b-5d84-400e-a86d-65affa485e79">
         </div>
 
-        <div class="row">
-       <div class="col-2">
-           <h1>here a space for advertisement or offers</h1>
-           <p>here ypu can put some text to let people know what the offer you have.</p>
-           <a href="#" class="btn">Explore now  &#8594;</a>
-       </div>
-       
-      </div>
-        </div>
-
-       
     </div>
 
+    <div class="small-container cart-page">
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="./category-1.jpg">
+                        <div>
+                            <p>Red helmet</p>
+                            <small>Price: 50.00$</small>
+                            <br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>$50.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="./category-1.jpg">
+                        <div>
+                            <p>Red helmet</p>
+                            <small>Price: 50.00$</small>
+                            <br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>$50.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="./category-1.jpg">
+                        <div>
+                            <p>Red helmet</p>
+                            <small>Price: 50.00$</small>
+                            <br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>$50.00</td>
+            </tr>
+        </table>
 
-    
-    <div class="small-container">
-
-        <div class="row row-2">
-            <h2>All Products</h2>
-                  </div>
-
-        <div class="row">
-            <div class="col-4">
-                <img src="./category-1.jpg">
-                <p>Red helmet</p>
-                <p>description</p>
-                <p id="price">$ 50.00</p>
-                <a href="#" class="btn">Add to cart</a>
-            </div>
-            <div class="col-4">
-
-                <img src="./category-1.jpg">
-                <p>Red helmet</p>
-                <p>description</p>
-                <p id="price">$ 50.00</p>
-                <a href="#" class="btn">Add to cart</a>
-            </div>
-            <div class="col-4">
-
-                <img src="./category-1.jpg">
-                <p>Red helmet</p>
-                <p>description</p>
-                <p id="price">$ 50.00</p>
-                <a href="#" class="btn">Add to cart</a>
-            </div>
-            
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>$150.00</td>
+                   
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>$50.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$200.00</td>
+                </tr>
+            </table>
         </div>
-               
-        <div class="page-btn">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>&#8594;</span>
-        </div>
-       </div>
+    </div>
 
-    <footer>
+   <footer>
         <div class="container">
         <div class="row">
             <div class="footer-col-1">
@@ -183,21 +201,6 @@ const conttxt = document.getElementById('cont');
 
     });
     </script>
-    <!-- <script async>
-    const logotxt = document.getElementById('logo');
-     const hometxt = document.getElementById('home');
-     const conttxt = document.getElementById('cont');
-         const change = function UserRet(logo, home){
-
-
-                logotxt.innerHTML = logo;
-                hometxt.setAttribute('href', home);
-
-        }
-
-
-                module.exports = change;
-
-    </script> -->
+   
 </body>
 </html>
