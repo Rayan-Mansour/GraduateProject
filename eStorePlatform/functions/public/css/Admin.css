@@ -1,3 +1,10 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+}
 .log-out {
   margin-left: 2vw;
   padding: 20px 40px;
@@ -50,20 +57,29 @@ table tr:last-of-type {
   border-bottom: 2px solid #505251;
 }
 .deletebtn {
+  padding: 3px;
   color: lightcoral;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  transition: background 0.5s;
 }
 .deletebtn:hover{
     background-color: lightcoral;
     color: #000000;
+}
+a{
+  text-decoration: none;
+  color: #555;
+  transition: 0.4s;
+  padding: 5px;
 }
 .container {
   max-width: 1300px;
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
+  
 }
 .row {
   display: flex;
@@ -90,6 +106,7 @@ table tr:last-of-type {
 footer {
   background: radial-gradient(#303030, #252525);
   color: #555;
+  
 }
 
 footer a {
@@ -121,4 +138,12 @@ a:hover {
 .page-btn span:hover{
     background: #505050;
     color: #ececec;
+}
+.logo{
+  color: #555;
+  font-size: 17px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 650;
+  
 }
