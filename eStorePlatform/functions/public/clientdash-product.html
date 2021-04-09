@@ -5,22 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
     <title>Products</title>
-    <link rel="stylesheet" href="./css/clientDashboard.css">
+    <link rel="stylesheet" href="/css/clientDashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+      body{
+          background-color: rgb(146, 146, 146);
+          font-family: 'Roboto', sans-serif;
+      }
+  </style>
 </head>
 <body>
   <div class="sidenav">
-    <div class="storename">[Store Name]</div>
-    <a href="client_dashboard.html"><i class="fa fa-home"></i> Home</a>
-    <a href="product.html"><i class="fas fa-tshirt"></i> Products</a>
-    <a href="Customers.html"><i class="fa fa-user-circle" aria-hidden="true"></i> Customers</a>
-    <a href="#"><i class="fas fa-box"></i> Orders</a>
-    <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
-    <a href="#"><i class="fas fa-star-half-alt"></i> Ratings</a>
-    <a href="#"><i class="fas fa-percentage"></i> Coupons</a>
-
-    <button type="submit" class="btnn">Log out</button>
+    <div class="storename"><a href="" target="_blank" id="store"></a></div>
+    <a href="" id="home"><i class="fa fa-home"></i> Home</a>
+    <a href="" id="pro"><i class="fas fa-tshirt"></i> Products</a>
+    <a href="" id="ord"><i class="fas fa-box"></i> Orders</a>
+    
+    <form action="/" method="post">
+         <input type="submit" id="logout" class="btnn" value="Log Out"></input>
+    </form>
+   
   </div>
       
       <!-- Use any element to open the sidenav -->
@@ -63,5 +69,55 @@
       
       </div>
     <script src="../Product_function.js"></script>
+    <script>
+       var urll = window.location.href;
+       var urlHome = urll.split('/products');
+    var urlCustom = urll.split('/products');
+    var url = urll.split('/');
+    document.getElementById('pro').style.backgroundColor = '#252525';
+    document.getElementById('store').innerHTML = url[4];
+    var urlStore = urll;
+    urlStore = urlStore.split('/dashboard');
+    console.log(urlCustom);
+    document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1]);
+    document.getElementById('home').setAttribute('href', urlHome[0]);
+    document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
+    document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
+    
+
+
+
+
+    var pName = document.getElementById("pName");
+var pPrice = document.getElementById("pPrice");
+var pQuantity = document.getElementById("pQuantity");
+var pDesc = document.getElementById("desc");
+var pImg = document.getElementById("img");
+const sub = document.getElementById("submit");
+
+
+
+sub.addEventListener("submit" , (e) =>{
+  if(pPrice.value <=0 || pQuantity.value <=0){
+    alert("negative value not accepted");
+  e.preventDefault();
+  }
+ else
+ var product = new Object();
+ product.name = pName;
+ alert(pName.value);
+ 
+})
+//var products = new Array();
+function AddProduct(){
+  document.getElementById("addBox").style.visibility = "visible";
+
+}
+
+
+function cancel(){
+  document.getElementById("addBox").style.visibility = "hidden";
+}
+    </script>
 </body>
 </html>

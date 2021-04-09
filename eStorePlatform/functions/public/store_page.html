@@ -17,12 +17,12 @@
    
       <div class="container">
         <div class="nav-bar">
-            <div class="logo" id="logo">Store Name</div>
+            <div class="logo" id="logo"></div>
             <nav>
                 <ul id="menuItem">
-                <li><a href="#" id="home">Home</a></li>
-                <li><a href="/contactus" id="cont">Contact</a></li>
-                <li><a href="#" id="signin">Sign in</a></li>
+                <li><a href="" id="home">Home</a></li>
+                <li><a href="/login" id="signin">Sign in</a></li>
+                <li><a href="/signupuser" id="signup">Sign up</a></li>
             </ul>
             </nav>
             <img id="cartSec" onclick="openCart()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px;">
@@ -31,10 +31,8 @@
 
         <div class="row">
        <div class="col-2">
-           <h1>here a space for advertisement or offers</h1>
-           <p>here ypu can put some text to let people know what the offer you have.</p>
-           <a href="#" class="btn">Explore now  &#8594;</a>
-       </div>
+           <h1 id="headline"></h1>
+               </div>
        
       </div>
         </div>
@@ -126,14 +124,13 @@ function menutogg(){
 
 </script>
 
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
     <script >
 
@@ -151,10 +148,19 @@ var firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-
+  
+  var x = window.location.href;
+  var y = document.URL;
+  
+  x = x.split("/");
+  y = y.split('/');
+  
+  console.log(x);
 const logotxt = document.getElementById('logo');
 const hometxt = document.getElementById('home');
 const conttxt = document.getElementById('cont');
+const signintxt = document.getElementById('signin');
+const signuptxt = document.getElementById('signup');
 
     const change = function UserRet(logo, home){
 
@@ -163,25 +169,35 @@ const conttxt = document.getElementById('cont');
            hometxt.setAttribute('href', home);
 
    }
+   firebase.firestore().collection('client-users').get().then(snapshot => {
 
-   firebase.database().ref('users').once('value', (snapshot) => {
-    snapshot.forEach(
-      (ChildSnapshot) => {
+snapshot.docs.map(doc => {
+  
+    if(doc.data().store == x[3]){
+    
+    logotxt.innerHTML = doc.data().store;
+    hometxt.setAttribute('href', doc.data().store);
+    signuptxt.setAttribute('href', '/' + doc.data().store + '/signupuser');
+    signintxt.setAttribute('href', '/' + doc.data().store + '/login');
+    document.getElementById('tt').innerHTML = doc.data().store;
+}
 
-        var x = document.URL;
-       
-        x = x.split("/");
+});
+});
 
-        if(ChildSnapshot.val().StoreName == x[3]){
+        firebase.firestore().collection('header-ad').get().then(snap => {
+            snap.docs.map(doc => {
+                console.log(doc.data().adHeader) ;
+                if(doc.data().store == x[3]){
+                    document.getElementById('headline').innerHTML = doc.data().adHeader;
+                }
+            })
+        })
 
-            logotxt.innerHTML = ChildSnapshot.val().StoreName;
-            hometxt.setAttribute('href', ChildSnapshot.val().StoreName);
-            document.getElementById('tt').innerHTML = ChildSnapshot.val().StoreName;
-        }
 
-      })
-
-    });
+    function hrefUrlHome(){
+        return window.location.href;
+    }
     </script>
     <!-- <script async>
     const logotxt = document.getElementById('logo');
