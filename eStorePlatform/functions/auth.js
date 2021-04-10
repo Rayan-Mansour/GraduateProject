@@ -6,8 +6,6 @@ const bodyparser = require('body-parser');
 // const { data } = require('jquery');
 
 
-
-
 router.use(bodyparser.urlencoded({extended: true}));
 router.use(bodyparser.json());
 
