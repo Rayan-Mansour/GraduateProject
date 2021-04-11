@@ -7,38 +7,40 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>eStore platform - sign in page</title>
+        <title>signUp - customer</title>
         <meta name="description" content="client logining to his account">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/signupCSS.css">
+        <link rel="stylesheet" href="/css/signupCSS.css">
     </head>
     <body>
         <div class="loginbox">
             <h1>Sign up</h1>
             <form method="POST">
-                <p>First Name</p>
-                <input type="text" name="Username" placeholder="Enter your first name">
-                <p>last Name</p>
-                <input type="text" name="Username" placeholder="Enter your last name">
-
-                <p>Password</p>
-                <input type="password" name="password" placeholder="Enter your password">
-                <p>Confirm Password</p>
-                <input type="password" name="password" placeholder="Confirm your password">
-
+               
                 <p>Email</p>
-                <input type="email" name="password" placeholder="Enter your email">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <p>Password</p>
+                <input type="password" name="password" placeholder="Enter your password" required >
+                <p>Confirm Password</p>
+                <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+
                 <p>Phone number</p>
-                <input type="tel" name="password" placeholder="Enter your number">
+                <input type="tel" name="tel" placeholder="Enter your number" required> 
 
 
-                <input type="submit" name="sign in" value="Sign up">
-                <input type="checkbox" name="checkbox" id="checkbox-1">
+                <input type="submit" name="sign up" value="Sign up">
+                <input type="checkbox" name="checkbox" id="checkbox-1" required>
                 <p class="agree">I agree all statements in  <a href="#" class="term-service">Terms of service</a></p>
-                <a href="#" class="signin">have an account?</a>
+                <a href="/loginuser" id="signin" class="signin">have an account?</a>
                 
             </form>
         </div>
-            <script src="" async defer></script>
+            <script>
+
+
+                    var url = window.location.href;
+                    url = url.split('signupuser');
+                    document.getElementById('signin').setAttribute('href', url[0]+'login');
+            </script>
     </body>
 </html>

@@ -5,22 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
     <title>Products</title>
-    <link rel="stylesheet" href="./css/clientDashboard.css">
+    <link rel="stylesheet" href="/css/clientDashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+      body{
+          background-color: rgb(146, 146, 146);
+          font-family: 'Roboto', sans-serif;
+      }
+
+      img{
+        width: 150px;
+        height: 100px;
+      }
+
+  </style>
 </head>
 <body>
   <div class="sidenav">
-    <div class="storename">[Store Name]</div>
-    <a href="client_dashboard.html"><i class="fa fa-home"></i> Home</a>
-    <a href="product.html"><i class="fas fa-tshirt"></i> Products</a>
-    <a href="Customers.html"><i class="fa fa-user-circle" aria-hidden="true"></i> Customers</a>
-    <a href="#"><i class="fas fa-box"></i> Orders</a>
-    <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
-    <a href="#"><i class="fas fa-star-half-alt"></i> Ratings</a>
-    <a href="#"><i class="fas fa-percentage"></i> Coupons</a>
-
-    <button type="submit" class="btnn">Log out</button>
+    <div class="storename"><a href="" target="_blank" id="store"></a></div>
+    <a href="" id="home"><i class="fa fa-home"></i> Home</a>
+    <a href="" id="pro"><i class="fas fa-tshirt"></i> Products</a>
+    <a href="" id="ord"><i class="fas fa-box"></i> Orders</a>
+    
+    <button id="logout" class="btnn" type="submit" onclick="logout()">Log Out</button>
+   
   </div>
       
       <!-- Use any element to open the sidenav -->
@@ -28,19 +38,21 @@
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <div id="main">
         <button onclick="AddProduct()" type="button" class="addprod" id="addprod"><i class="far fa-plus-square"></i> Add Product</button>
-      <div id="lgDemo">
-        <div class="item">Item A</div>
-        <div class="item">Item B</div>
+      <div id="lgDemo" class="tabl">
+        <!-- <div class="item"><img src="/Untitled.png" >
+      </div> -->
+        <!-- <div class="item">Item B</div>
         <div class="item">Item C</div>
         <div class="item">Item D</div>
         <div class="item">Item E</div>
         <div class="item">Item F</div>
-        <div class="item">Item G</div>
+        <div class="item">Item G</div> -->
 
       </div>
+
         <div class="addBox" id="addBox">
           <h1>Add Product</h1>
-          <form method="post" id="submit">
+          <div  id="submit">
               <p>Name</p>
               <input type="text" id = "pName" name="productName" placeholder="Enter product name" required>
               <p>Price</p>
@@ -50,18 +62,184 @@
               <p>Description</p>
               <input class="desc" id = "desc" type="text" name="description" placeholder="Enter product description" required>
               <p>Upload Product image</p>
-              <input type="file" id="img" name="img" accept="image/*">
+              <button id="select">select Image</button>
               <h6 hidden id = "h6">error</h6>
-              <input type="submit" name="add" value="Add" class="bttn0">
+              <input type="submit" name="add" onclick="successAdd()" value="Add" class="bttn0">
              <!-- <input type="submit"name="cancel" value="Cancel" class="bttn1">-->
              <button onclick="cancel()" type="button" class="bttn1" id="bttn1"> Cancel</button>
 
       
-          </form>
+          </div>
       </div>
 
       
       </div>
-    <script src="../Product_function.js"></script>
+
+
+
+
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+
+
+      <script>
+
+
+function logout() {
+            firebase.auth().signOut();
+                  uree = window.location.href;
+                  uree = uree.split('/dashboard');
+               window.location = '/';
+    }
+
+
+        var files=[];
+       var urll = window.location.href;
+       var urlHome = urll.split('/products');
+    var urlCustom = urll.split('/products');
+    var url = urll.split('/');
+    document.getElementById('pro').style.backgroundColor = '#252525';
+    document.getElementById('store').innerHTML = url[4];
+    var urlStore = urll;
+    urlStore = urlStore.split('/dashboard');
+    console.log(urlStore);
+    urlStore[1] = urlStore[1].split('products');
+    console.log(urlCustom);
+    document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1][0]);
+    document.getElementById('home').setAttribute('href', urlHome[0]);
+    document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
+    document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
+    
+
+
+
+
+var pName = document.getElementById("pName");
+var pPrice = document.getElementById("pPrice");
+var pQuantity = document.getElementById("pQuantity");
+var pDesc = document.getElementById("desc");
+var pImg = document.getElementById("iimg");
+const sub = document.getElementById("submit");
+
+
+     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+     var firebaseConfig = {
+  apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
+    authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+    databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "estoreplatform-2d6f7",
+    storageBucket: "estoreplatform-2d6f7.appspot.com",
+    messagingSenderId: "1004459441040",
+    appId: "1:1004459441040:web:05cd7d03073c8549d81115",
+    measurementId: "G-2V5D2MQ7R3"
+};
+
+  firebase.initializeApp(firebaseConfig);
+
+  console.log(firebase.auth().currentUser);
+//var products = new Array();
+function AddProduct(){
+  document.getElementById("addBox").style.visibility = "visible";
+
+}
+
+
+function cancel(){
+  document.getElementById("addBox").style.visibility = "hidden";
+}
+
+
+var reader;
+
+  document.getElementById('select').onclick = function(e) {
+
+    var input = document.createElement('input');
+    input.type = 'file';
+
+    input.onchange = e => {
+      files = e.target.files;
+      reader = new FileReader();
+      
+    }
+        input.click();
+  }
+
+function successAdd() {
+
+  
+ firebase.storage().ref('products/'+url[4]+'/'+pName.value+'.jpg').put(files[0]);
+  var ppp = pName.value;
+  var dbAdd = firebase.firestore().collection('products').doc(url[4]).collection('products-store');
+
+  var productInfo = {
+        store: url[4],
+        productName: pName.value,
+        productQuantity: pQuantity.value,
+        productPrice: pPrice.value,
+        productDesc: pDesc.value
+  }
+
+  dbAdd.add(productInfo).then((data) => {
+    data.id.replace(data.id, ppp);
+    alert('success adding refresh the page!');
+    window.location = window.location.href;
+  }).catch((err) => {
+    alert(err);
+  });
+  console.log()
+ 
+document.getElementById("addBox").style.visibility = "hidden";
+ 
+}
+
+firebase.firestore().collection('products').doc(url[4]).collection('products-store').get().then(snapshot => {
+  snapshot.docs.map(doc => {
+        console.log(doc.data().productName);
+    var container = document.querySelector('.tabl');
+  var divItem = document.createElement('div');
+  divItem.classList.add('item');
+  divItem.setAttribute('id', doc.data().productName);
+  divItem.classList.add(doc.data().productName);
+ var imgURL = firebase.storage().ref('products/'+url[4]+'/'+doc.data().productName+'.jpg').getDownloadURL();
+  var imgg = document.createElement('img')
+  var name = document.createElement('p')
+  var desc = document.createElement('p')
+  var price = document.createElement('p') 
+  var qunt = document.createElement('p') 
+  var br = document.createElement('br')
+  var delPrdct = document.createElement('button');
+  delPrdct.classList.add(doc.data().productName);
+  delPrdct.innerHTML = 'delete';
+  
+  delPrdct.onclick = function(e)  {
+        document.getElementById(doc.data().productName).style.visibility = 'hidden';
+        firebase.firestore().collection('products').doc(url[4]).collection('products-store').doc(doc.id).delete();
+  }
+
+  imgURL.then((urlimg) => {
+    divItem.appendChild(imgg).src = urlimg;
+    divItem.appendChild(name).innerHTML = '<h3>Name: </h3>'+ '<h5>'+doc.data().productName+ '</h5>';
+  //divItem.appendChild(br);
+  divItem.appendChild(desc).innerHTML = '<h3>Description: </h3>'+ '<h5>'+doc.data().productDesc + '</h5>';
+  //divItem.appendChild(br);
+  divItem.appendChild(price).innerHTML = '<h3>Price:</h3>'+ '<h5>' +'$'+doc.data().productPrice+ '</h5>';
+  //divItem.appendChild(br);
+  divItem.appendChild(qunt).innerHTML = '<h3>Quantity: </h3>'+ '<h5>'+doc.data().productQuantity+ '</h5>';
+  divItem.appendChild(delPrdct);
+  container.appendChild(divItem);
+  })
+  
+
+     
+  })
+})
+    </script>
 </body>
 </html>

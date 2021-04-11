@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="tt">Cart</title>
-    <link rel="stylesheet" href="./css/Store-style.css">
+    <link rel="stylesheet" href="/css/Store-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,15 +17,15 @@
    
       <div class="container">
         <div class="nav-bar">
-            <div class="logo" id="logo">Store Name</div>
+            <div class="logo" id="logo"></div>
             <nav>
                 <ul id="menuItem">
-                <li><a href="#" id="home">Home</a></li>
-                <li><a href="#" id="cont">Contact</a></li>
-                <li><a href="#" id="signin">Sign in</a></li>
+                <li><a href="" id="home">Home</a></li>
+                <li><a href="" id="cont">Contact</a></li>
+                <li><a href="" id="signin">Sign in</a></li>
             </ul>
             </nav>
-            <img src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px;">
+            <img onclick="openCart()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px; cursor: pointer;"><span class="cart">0</span>
             <img class="menu-icon" onclick="menutogg()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fmenu.png?alt=media&token=ff17647b-5d84-400e-a86d-65affa485e79">
         </div>
 
@@ -124,83 +124,242 @@
     </div>
     </footer>
     
-
-
-
 <!-- js for toggle menu -->
 <script>
-
-var menutm = document.getElementById('menuItem');
-menutm.style.maxHeight = '0px';
-
-function menutogg(){
-    if(menutm.style.maxHeight == '0px'){
-        menutm.style.maxHeight = '200px';
-    }
-    else{
-        menutm.style.maxHeight = '0px';
-    }
+function openCart(){
+    let url = window.location.href
+        window.location = url;
 }
-
-</script>
-
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-
-    <script >
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
-    authDomain: "estoreplatform-2d6f7.firebaseapp.com",
-    databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "estoreplatform-2d6f7",
-    storageBucket: "estoreplatform-2d6f7.appspot.com",
-    messagingSenderId: "1004459441040",
-    appId: "1:1004459441040:web:05cd7d03073c8549d81115",
-    measurementId: "G-2V5D2MQ7R3"
-};
-
-  firebase.initializeApp(firebaseConfig);
-
-
-const logotxt = document.getElementById('logo');
-const hometxt = document.getElementById('home');
-const conttxt = document.getElementById('cont');
-
-    const change = function UserRet(logo, home){
-
-
-           logotxt.innerHTML = logo;
-           hometxt.setAttribute('href', home);
-
-   }
-
-   firebase.database().ref('users').once('value', (snapshot) => {
-    snapshot.forEach(
-      (ChildSnapshot) => {
-
-        var x = document.URL;
-       
-        x = x.split("/");
-
-        if(ChildSnapshot.val().StoreName == x[3]){
-
-            logotxt.innerHTML = ChildSnapshot.val().StoreName;
-            hometxt.setAttribute('href', ChildSnapshot.val().StoreName);
-            document.getElementById('tt').innerHTML = ChildSnapshot.val().StoreName;
+    var menutm = document.getElementById('menuItem');
+    menutm.style.maxHeight = '0px';
+    
+    function menutogg(){
+        if(menutm.style.maxHeight == '0px'){
+            menutm.style.maxHeight = '200px';
         }
-
-      })
-
-    });
+        else{
+            menutm.style.maxHeight = '0px';
+        }
+    }
+    
     </script>
-   
+    
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    
+        <script >
+    
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
+        authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+        databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "estoreplatform-2d6f7",
+        storageBucket: "estoreplatform-2d6f7.appspot.com",
+        messagingSenderId: "1004459441040",
+        appId: "1:1004459441040:web:05cd7d03073c8549d81115",
+        measurementId: "G-2V5D2MQ7R3"
+    };
+    
+      firebase.initializeApp(firebaseConfig);
+    
+      
+      var x = window.location.href;
+      var y = document.URL;
+      
+      x = x.split("/");
+      y = y.split('/');
+      
+      console.log(x);
+    const logotxt = document.getElementById('logo');
+    const hometxt = document.getElementById('home');
+    const conttxt = document.getElementById('cont');
+    const signintxt = document.getElementById('signin');
+    const signuptxt = document.getElementById('signup');
+    
+        const change = function UserRet(logo, home){
+    
+    
+               logotxt.innerHTML = logo;
+               hometxt.setAttribute('href', home);
+    
+       }
+       firebase.firestore().collection('client-users').get().then(snapshot => {
+    
+    snapshot.docs.map(doc => {
+      
+        if(doc.data().store == x[3]){
+        
+        logotxt.innerHTML = doc.data().store;
+        hometxt.setAttribute('href', doc.data().store);
+        //signuptxt.setAttribute('href', '/' + doc.data().store + '/signupuser');
+        signintxt.setAttribute('href', '/' + doc.data().store + '/login');
+        document.getElementById('tt').innerHTML = doc.data().store;
+    }
+    
+    });
+    });
+    
+            firebase.firestore().collection('header-ad').get().then(snap => {
+                snap.docs.map(doc => {
+                    console.log(doc.data().adHeader) ;
+                    if(doc.data().store == x[3]){
+                        document.getElementById('headline').innerHTML = doc.data().adHeader;
+                    }
+                })
+            })
+    
+    
+           
+          
+        firebase.firestore().collection('products').doc(x[3]).collection('products-store').get().then(snapshot => {
+            let products = [];
+      snapshot.docs.map(doc => {
+          console.log(doc.data().productName);
+        
+       
+        
+        var imgURL = firebase.storage().ref('products/'+x[3]+'/'+doc.data().productName+'.jpg').getDownloadURL();
+      
+        var smallCont = document.querySelector('.small-container');
+    var row = document.querySelector('.rowNew');
+        
+        var col = document.createElement('div');
+        col.classList.add('col-4');
+        col.setAttribute('id', doc.data().productName);
+        var imgProduct = document.createElement('img');
+        var name = document.createElement('p');
+      var desc = document.createElement('p');
+      var price = document.createElement('p');
+      var qunt = document.createElement('p');
+      var button = document.createElement('button');
+      button.innerHTML = 'add to Cart';
+      button.classList.add('add-cart');
+      button.classList.add('btn');
+      button.type = 'submit';
+      
+      
+      var arr = firebase.firestore().collection('products').doc(x[3]).collection('products-store').get().then(snapshot => {
+          
+         snapshot.docs.map(doc => {
+                products.push({
+                    name: doc.data().productName,
+                    price: doc.data().productPrice,
+                    inCart: 0
+                });
+         })               
+        })
+         
+         
+      
+              imgURL.then((url) => {
+                  imgProduct.src = url;
+            col.firstChild.before(imgProduct);
+            
+        })
+        
+          col.appendChild(name).innerHTML = 'Product Name: '+'<b>'+doc.data().productName+'</b>';
+          col.appendChild(desc).innerHTML = 'Description: '+'<b>'+doc.data().productDesc+'</b>';
+          col.appendChild(qunt).innerHTML = 'Quantity: '+'<b>'+doc.data().productQuantity+' Left</b>';
+          col.appendChild(price).innerHTML = 'Price: '+'<b>$'+doc.data().productPrice+'.00</b>';
+          col.appendChild(button);
+          row.appendChild(col);
+          smallCont.appendChild(row);
+                 
+       
+          
+            
+     
+      });
+    
+      let carts = document.querySelectorAll('.add-cart')
+            console.log(carts.length)
+      for(let i=0; i<carts.length; i++) {
+        carts[i].addEventListener('click', () => {
+            cartNumbers(products[i]);
+            totalCost(products[i]);
+        });
+    }
+      
+    });
+    
+    function onLoadCartNumbers() {
+       
+        let productNumbers = localStorage.getItem('cartNumbers');
+    
+        if(productNumbers){
+            document.querySelector('.cart').textContent = productNumbers;
+        }
+    }
+    
+    function cartNumbers(product) {
+    let productNumbers = localStorage.getItem('cartNumbers');
+    
+        productNumbers = parseInt(productNumbers);
+    
+        if( productNumbers ){
+             localStorage.setItem('cartNumbers', productNumbers + 1);
+             document.querySelector('.cart').textContent = productNumbers + 1;
+        } else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.cart').textContent = 1;
+        }
+    
+       setItems(product);
+    }
+    
+    function setItems(product) {
+        let cartItems = localStorage.getItem('productsInCart');
+        cartItems = JSON.parse(cartItems);
+    
+        if(cartItems != null){
+            if(cartItems[product.name] == undefined){
+                cartItems = {
+                    ...cartItems,
+                    [product.name]: product
+                }
+          }
+          cartItems[product.name].inCart += 1;
+        } else {
+             product.inCart = 1;
+        cartItems = {
+            [product.name]: product
+        }
+    }
+       
+        localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+    }
+    
+    function totalCost(product) {
+        let cartCost = localStorage.getItem('totalCost');
+        console.log('My Cart Cost is: ', cartCost);
+    
+        if(cartCost != null) {
+            cartCost = parseInt(cartCost);
+            product.price = parseInt(product.price);
+            localStorage.setItem('totalCost', cartCost + product.price);
+        } else {
+            localStorage.setItem('totalCost', product.price);
+        }
+    }
+    
+    function displayCart() {
+           let cartItems = localStorage.getItem('productsInCart');
+           cartItems = JSON.parse(cartItems);
+           
+           console.log(cartItems);
+
+    }
+
+
+    onLoadCartNumbers();
+    displayCart();
+        </script>
+     
 </body>
 </html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="/css/clientDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+        body{
+            background-color: rgb(146, 146, 146);
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <div class="storename"><a href="" target="_blank" id="store"></a></div>
+        <a href="" id="home"><i class="fa fa-home"></i> Home</a>
+        <a href="" id="pro"><i class="fas fa-tshirt"></i> Products</a>
+        <a href="" id="ord"><i class="fas fa-box"></i> Orders</a>
+        
+        <button id="logout" class="btnn" type="submit" onclick="logout()">Log Out</button>
+       
+      </div>
+      
+      <!-- Use any element to open the sidenav -->
+     
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <div id="main">
+       
+      </div>
+
+
+
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+   <script>
+       
+    function logout() {
+            firebase.auth().signOut();
+                  uree = window.location.href;
+                  uree = uree.split('/dashboard');
+               window.location = '/';
+    }
+                      
+
+                
+    
+
+
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
+    authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+    databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "estoreplatform-2d6f7",
+    storageBucket: "estoreplatform-2d6f7.appspot.com",
+    messagingSenderId: "1004459441040",
+    appId: "1:1004459441040:web:05cd7d03073c8549d81115",
+    measurementId: "G-2V5D2MQ7R3"
+};
+
+  firebase.initializeApp(firebaseConfig);
+
+
+var table ="";
+var no_cust = 10;
+var no_attr = 2;
+var display_header = 0;
+
+
+ for(var row = 0 ; row < no_cust ; row++){
+    table +="<tr>"
+    for( var columns = 0; columns <no_attr ; columns++){
+        //if condition to display header of the table
+        if(display_header === 0){
+            table = "";
+            table +="<thead><tr><th>Email</th>  <th>Order No</th></tr></thead>"
+            display_header = 1;
+            table +="<tr>"
+            
+        }
+        table += "<td>"+ columns+"</td>";
+    }
+    table += "</tr>"
+}
+
+document.write("<table>"+ table +"</table>");
+
+
+
+
+
+    var urll = window.location.href;
+    var urlHome = urll.split('/orders')
+ var urlCustom = urll.split('/orders');
+ var url = urll.split('/');
+ document.getElementById('ord').style.backgroundColor = '#252525';
+ document.getElementById('store').innerHTML = url[4];
+ var urlStore = urll;
+ urlStore = urlStore.split('/dashboard');
+ urlStore[1] = urlStore[1].split('orders');
+ console.log(urlHome);
+ document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1][0]);
+ document.getElementById('home').setAttribute('href', urlHome[0]);
+ document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
+ document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
+ 
+ </script>
+</body>
+</html>

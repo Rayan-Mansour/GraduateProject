@@ -8,15 +8,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>sign in page</title>
-        <meta name="description" content="client logining to his account">
+        <meta name="description" content="logining to his account">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/signinCSS.css" media="all"/>
+       
     </head>
     <body>
         
         <div class="loginbox">
-               
-           
+            
             <form method="post">  
                 
                 <h1>Login</h1>
@@ -26,10 +26,16 @@
                 <input type="password" name="password" placeholder="Enter your password" required>
                 <input type="submit" name="sign in" value="Sign in">
                 <a href="#">forget password?</a>
-                <a href="/signup">Don't have account?</a>
+                <a href="/signup" id="signup">Don't have account?</a>
                 
             </form>
-        </div>
-            
+        </div> 
+        
+            <script>
+                 var url = window.location.href;
+                    url = url.split('login');
+                    document.getElementById('signup').setAttribute('href', url[0]+'signupuser');
+                   
+            </script>
     </body>
 </html>

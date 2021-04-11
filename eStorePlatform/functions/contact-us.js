@@ -13,10 +13,10 @@ const formEvent = form.addEventListener("submit", (event) => {
   sendMail(mail);
 });
 
-
 const sendMail = (mail) => {
     //1.
-    fetch("https://estoreplatform-2d6f7.web.app/send", {
+
+    fetch("https://estoreplatform-2d6f7.web.app/contactus", {
       method: "post", //2.
       body: mail, //3.
   
