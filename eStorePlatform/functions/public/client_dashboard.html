@@ -40,9 +40,11 @@
         <a href="" id="pro"><i class="fas fa-tshirt"></i> Products</a>
         <a href="#" id="ord"><i class="fas fa-box"></i> Orders</a>
        
-        <form action="/" method="post">
-             <input type="submit" id="logout" class="btnn" value="Log Out"></input>
-        </form>
+            
+                <button id="logout" class="btnn" type="submit" onclick="logout()">Log Out</button>
+            
+             
+        
        
       </div>
       
@@ -76,10 +78,22 @@
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
    <script>
+       
+    function logout() {
+            firebase.auth().signOut();
+                  uree = window.location.href;
+                  uree = uree.split('/dashboard');
+               window.location = '/';
+    }
+                      
+
+                
+    
+
 
        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
@@ -94,7 +108,11 @@ var firebaseConfig = {
 };
 
   firebase.initializeApp(firebaseConfig);
-      
+
+  firebase.auth().onAuthStateChanged((user) => {
+      if(user){}else{console.log('not log in')}
+  })
+  
     var urll = window.location.href;
     var urlCustom = urll;
     var url = urll.split('/');

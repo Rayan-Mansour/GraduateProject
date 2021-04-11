@@ -31,10 +31,16 @@
                 <input type="submit" name="sign up" value="Sign up">
                 <input type="checkbox" name="checkbox" id="checkbox-1" required>
                 <p class="agree">I agree all statements in  <a href="#" class="term-service">Terms of service</a></p>
-                <a href="/loginuser" class="signin">have an account?</a>
+                <a href="/loginuser" id="signin" class="signin">have an account?</a>
                 
             </form>
         </div>
-            <script src="" async defer></script>
+            <script>
+
+
+                    var url = window.location.href;
+                    url = url.split('signupuser');
+                    document.getElementById('signin').setAttribute('href', url[0]+'login');
+            </script>
     </body>
 </html>

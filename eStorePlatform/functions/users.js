@@ -1,3 +1,4 @@
+const { data } = require('jquery');
 const { db } = require('./database');
 const firebase = require('./firebase');
 const {validateLoginData, validateSignUpData, validateSignUpDataUser} = require('./validators');
@@ -12,41 +13,57 @@ exports.loginUser = (req, res) => {
         password: req.body.password
     }
 
-    // const { valid, errors } = validateLoginData(user);
-    // if(!valid) return res.json(errors);
+     const { valid, errors } = validateLoginData(user);
+     if(!valid) return res.json(errors);
 
     firebase
     .auth()
     .signInWithEmailAndPassword(user.email, user.password)
     .then((data) => {
-        return data.user.getIdToken();
+        
+         data.user.getIdToken();
+        db.collection('client-users').get().then(snapshot => {
+                                snapshot.docs.map(doc => {
+                                    if(data.user.uid === doc.data().userId){
+                                        
+                                       return res.redirect('/dashboard/' +doc.data().store);
+                                    }
+                                });
+                            });
+                            db.collection('users').get().then(snapshot => {
+                                                    snapshot.docs.map(doc => {
+                                                        if(data.user.uid === doc.data().userId) {
+                                                            var url = req.originalUrl;
+                                                            url = url.split('login');
+                                                            return res.redirect(url[0]+'home');
+                                                        }
+                                                    });
+                                                });
+                                                
     })
-    .then((token) => {
-        firebase.auth().onAuthStateChanged((user) =>{
-                if(user){
-                    db.collection('client-users').get().then(snapshot => {
-                        snapshot.docs.map(doc => {
-                            if(user.email === doc.data().email){
-                               return res.redirect('/dashboard/' +doc.data().store);
-                            }
-                        });
-                    });
-                    db.collection('users').get().then(snapshot => {
-                        snapshot.docs.map(doc => {
-                            if(user.email === doc.data().email){
-                                var url = req.originalUrl;
-                                url = url.split('/');
-                                return res.redirect('/'+url[0]);
-                            }
-                        });
-                    });
-                } else {
-                    
-                    return res.redirect('/'+url[0]);
-                }
-        })
-       // return res.json(alert('signed in'));
-    })
+    // .then((token) => {
+        
+                  
+    //                 db.collection('client-users').get().then(snapshot => {
+    //                     snapshot.docs.map(doc => {
+    //                         if(user.email === doc.data().email){
+                                
+    //                            return res.redirect('/dashboard/' +doc.data().store);
+    //                         }
+    //                     });
+    //                 });
+    //                 db.collection('users').get().then(snapshot => {
+    //                     snapshot.docs.map(doc => {
+    //                         if(user.email === doc.data().email) {
+    //                             var url = req.originalUrl;
+    //                             url = url.split('login');
+    //                             return res.redirect(url[0]+'home');
+    //                         }
+    //                     });
+    //                 });
+                
+    //    // return res.json(alert('signed in'));
+    // })
     .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;

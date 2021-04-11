@@ -16,6 +16,7 @@ const { loginUser } = require('./users');
 const { signUpUser, signUpFinalUser } = require('./users')
 const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
+const auth = require("firebase-admin");
 //const { getMaxListeners } = require("process");
 //const { request } = require("http");
 require("dotenv").config();
@@ -52,14 +53,25 @@ db.collection('client-users').get().then(snapshot => {
       snapshot.docs.map(doc => {
         
         app.get('/' + doc.data().store, (req, res) => {
+                
+                  res.sendFile(path.join(__dirname+"/public/store_page.html"));
 
-         
-  res.sendFile(path.join(__dirname+"/public/store_page.html"));
+         })
 
-                    });
+          
 
+        app.get('/' + doc.data().store + '/cart', (req, res) => {
+          
+            res.sendFile(path.join(__dirname+"/public/cart.html"));
+                              
+        });
+
+        app.get('/'+ doc.data().store+'/home', (req, res) => {
+          res.sendFile(path.join(__dirname+"/public/store_page_logged_in.html"));
+        })
       });
-   });
+      });
+   
    
    db.collection('client-users').get().then(snapshot => {
 
@@ -79,16 +91,7 @@ db.collection('client-users').get().then(snapshot => {
       
                  });
 
-                 app.get('/dashboard/' + doc.data().store + '/coupons', (req, res) => {
-
-       
-                  res.sendFile(path.join(__dirname+"/public/coupon.html"));
-            
-                       });
-
-
-
-
+                 
           });
       });
 
@@ -97,7 +100,7 @@ db.collection('client-users').get().then(snapshot => {
    db.collection('client-users').get().then(snapshot => {
     snapshot.docs.map(doc => {
   app.get('/' + doc.data().store +'/login', (req, res) => {
-    res.sendFile(path.join(__dirname+"/public/sign_in.html"));
+    res.sendFile(path.join(__dirname+"/public/sign_in_user.html"));
   });
     });
 });
@@ -233,7 +236,7 @@ var generatorIssuesNo = () => {
 
 }
 
-//app.listen(3000);
+app.listen(3000);
 
  exports.app = functions.https.onRequest(app);
  

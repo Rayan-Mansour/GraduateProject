@@ -29,9 +29,7 @@
     <a href="" id="pro"><i class="fas fa-tshirt"></i> Products</a>
     <a href="" id="ord"><i class="fas fa-box"></i> Orders</a>
     
-    <form action="/" method="post">
-         <input type="submit" id="logout" class="btnn" value="Log Out"></input>
-    </form>
+    <button id="logout" class="btnn" type="submit" onclick="logout()">Log Out</button>
    
   </div>
       
@@ -88,9 +86,20 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
 
       <script>
+
+
+function logout() {
+            firebase.auth().signOut();
+                  uree = window.location.href;
+                  uree = uree.split('/dashboard');
+               window.location = '/';
+    }
+
+
         var files=[];
        var urll = window.location.href;
        var urlHome = urll.split('/products');
@@ -100,8 +109,10 @@
     document.getElementById('store').innerHTML = url[4];
     var urlStore = urll;
     urlStore = urlStore.split('/dashboard');
+    console.log(urlStore);
+    urlStore[1] = urlStore[1].split('products');
     console.log(urlCustom);
-    document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1]);
+    document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1][0]);
     document.getElementById('home').setAttribute('href', urlHome[0]);
     document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
     document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
@@ -132,7 +143,7 @@ const sub = document.getElementById("submit");
 
   firebase.initializeApp(firebaseConfig);
 
-
+  console.log(firebase.auth().currentUser);
 //var products = new Array();
 function AddProduct(){
   document.getElementById("addBox").style.visibility = "visible";
@@ -178,6 +189,7 @@ function successAdd() {
   dbAdd.add(productInfo).then((data) => {
     data.id.replace(data.id, ppp);
     alert('success adding refresh the page!');
+    window.location = window.location.href;
   }).catch((err) => {
     alert(err);
   });
@@ -189,8 +201,7 @@ document.getElementById("addBox").style.visibility = "hidden";
 
 firebase.firestore().collection('products').doc(url[4]).collection('products-store').get().then(snapshot => {
   snapshot.docs.map(doc => {
-    var abc = 'A';
-    console.log(doc.data().productName);
+        console.log(doc.data().productName);
     var container = document.querySelector('.tabl');
   var divItem = document.createElement('div');
   divItem.classList.add('item');
