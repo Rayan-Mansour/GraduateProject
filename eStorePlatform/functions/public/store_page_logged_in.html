@@ -102,6 +102,7 @@ function menutogg(){
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
+
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
@@ -123,20 +124,24 @@ var firebaseConfig = {
 };
 
   firebase.initializeApp(firebaseConfig);
- 
-  console.log(firebase.auth().currentUser)
- async function logOut() {
-          
-    await firebase.auth().signOut().then(() =>{
 
-         console.log('log Out user') }).catch(error => {
-             console.log(error.message);
-         });
-         let url = window.location.href;
-         url = url.split('home');
-        window.location = url[0];
-         window.location;
-}
+
+
+  async function logOut() {
+          
+          await firebase.auth().signOut().then(() => {
+      
+               console.log('log Out user') })
+               
+               .catch(error => {
+                   console.log(error.message);
+               });
+      
+               let url = window.location.href;
+               url = url.split('home');
+              window.location = url[0];
+               window.location;
+      }
 
 
   var x = window.location.href;

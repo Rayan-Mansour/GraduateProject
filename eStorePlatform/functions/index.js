@@ -140,7 +140,7 @@ app.post('/signup', signUpUser);
 
 db.collection('client-users').get().then(snapshot => {
   snapshot.docs.map(doc => {
-    app.post('/' + doc.data().store +'/login', loginUser);
+  //  app.post('/' + doc.data().store +'/login', loginUser);
   });
 });
 

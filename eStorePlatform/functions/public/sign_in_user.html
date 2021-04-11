@@ -21,21 +21,52 @@
                 
                 <h1>Login</h1>
                 <p>email</p>
-                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
                 <p>Password</p>
-                <input type="password" name="password" placeholder="Enter your password" required>
-                <input type="submit" name="sign in" value="Sign in">
+                <input type="password" name="password" id="pass" placeholder="Enter your password" required>
+                
                 <a href="#">forget password?</a>
                 <a href="/signup" id="signup">Don't have account?</a>
                 
             </form>
+            <input type="submit" id="Signin" name="sign in" value="Sign in">
         </div> 
         
-            <script>
-                 var url = window.location.href;
-                    url = url.split('login');
-                    document.getElementById('signup').setAttribute('href', url[0]+'signupuser');
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <script>
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyCMVlN5Jig5hnH5It1GWOA0kILH-EL3Exc",
+    authDomain: "estoreplatform-2d6f7.firebaseapp.com",
+    databaseURL: "https://estoreplatform-2d6f7-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "estoreplatform-2d6f7",
+    storageBucket: "estoreplatform-2d6f7.appspot.com",
+    messagingSenderId: "1004459441040",
+    appId: "1:1004459441040:web:05cd7d03073c8549d81115",
+    measurementId: "G-2V5D2MQ7R3"
+};
+
+  firebase.initializeApp(firebaseConfig);
+
+
+    var url = window.location.href;
+    url = url.split('login');
+    document.getElementById('signup').setAttribute('href', url[0]+'signupuser');
                    
+let email = document.getElementById('email').value;
+let pass = document.getElementById('pass').value;
+let IDuser;
+
+            localStorage.setItem('UserID', IDuser);
             </script>
     </body>
 </html>
