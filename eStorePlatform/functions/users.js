@@ -197,7 +197,9 @@ exports.signUpFinalUser = (req, res) => {
     .then(() => {
         // const successAdding = res.status(201).json({ token });
         // const successSignUp = res.redirect('/signedupsuccessfully');
-        const returnpage= res.redirect('/signedupsuccessfully');
+        var url = req.originalUrl;
+        url = url.split('signupuser')
+        const returnpage= res.redirect(url[0]+'login');
         return {returnpage};
             })
     .catch((err) => {
@@ -211,6 +213,8 @@ exports.signUpFinalUser = (req, res) => {
         }
     });     
 }
+
+
     
     
    

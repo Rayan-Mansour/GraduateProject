@@ -109,9 +109,6 @@ var firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-  firebase.auth().onAuthStateChanged((user) => {
-      if(user){}else{console.log('not log in')}
-  })
   
     var urll = window.location.href;
     var urlCustom = urll;

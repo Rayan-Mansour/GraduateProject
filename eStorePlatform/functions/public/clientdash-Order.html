@@ -31,9 +31,33 @@
      
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <div id="main">
-       
+        <h1>Order page</h1>
       </div>
+      
+      <div id="lgDemo" class="tabl">
+        <!-- <div class="item"><img src="/Untitled.png" >
+      </div> -->
+        <!-- <div class="item">Item B</div>
+        <div class="item">Item C</div>
+        <div class="item">Item D</div>
+        <div class="item">Item E</div>
+        <div class="item">Item F</div>
+        <div class="item">Item G</div> -->
+        
+        <table class="order">
+            <tr>
+              <th >Order Number</th>
+          <th >User</th>
+          <th>Create At</th>
+          <th>Total Cost</th> 
+          <th>Status</th> 
+            </tr>
+          
+            
 
+        </table>
+      </div>
+                   
 
 
      <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -73,49 +97,47 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
 
-var table ="";
-var no_cust = 10;
-var no_attr = 2;
-var display_header = 0;
 
+            var urll = window.location.href;
+            var urlHome = urll.split('/orders')
+        var urlCustom = urll.split('/orders');
+        var url = urll.split('/');
+        document.getElementById('ord').style.backgroundColor = '#252525';
+        document.getElementById('store').innerHTML = url[4];
+        var urlStore = urll;
+        urlStore = urlStore.split('/dashboard');
+        urlStore[1] = urlStore[1].split('orders');
+        console.log(urlHome);
+        document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1][0]);
+        document.getElementById('home').setAttribute('href', urlHome[0]);
+        document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
+        document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
+        
+var table = document.querySelector('.order');
+    var tr = document.createElement('div');
+    var tdOrderNo = document.createElement('p');
+    var tdUserEmail = document.createElement('p');
+    var tdCreateOrder = document.createElement('p');
+    var tdTotalCost = document.createElement('p');
 
- for(var row = 0 ; row < no_cust ; row++){
-    table +="<tr>"
-    for( var columns = 0; columns <no_attr ; columns++){
-        //if condition to display header of the table
-        if(display_header === 0){
-            table = "";
-            table +="<thead><tr><th>Email</th>  <th>Order No</th></tr></thead>"
-            display_header = 1;
-            table +="<tr>"
-            
-        }
-        table += "<td>"+ columns+"</td>";
-    }
-    table += "</tr>"
-}
+    firebase.firestore().collection('client-users').doc(url[4]).collection('Orders').get().then(snap => {
+        snap.docs.map( doc => {
 
-document.write("<table>"+ table +"</table>");
+        
+           table.innerHTML += `
+           <tr>
+            <td>${doc.data().orderNumber}</td>
+            <td>${doc.data().email}</td>
+            <td>${doc.data().createAt}</td>
+            <td>${doc.data().totalCost}</td>
+            <td> Completed </td>
+            </tr>
+           `;
+        })
 
+        
+    })
 
-
-
-
-    var urll = window.location.href;
-    var urlHome = urll.split('/orders')
- var urlCustom = urll.split('/orders');
- var url = urll.split('/');
- document.getElementById('ord').style.backgroundColor = '#252525';
- document.getElementById('store').innerHTML = url[4];
- var urlStore = urll;
- urlStore = urlStore.split('/dashboard');
- urlStore[1] = urlStore[1].split('orders');
- console.log(urlHome);
- document.getElementById('store').setAttribute('href', urlStore[0]+urlStore[1][0]);
- document.getElementById('home').setAttribute('href', urlHome[0]);
- document.getElementById('pro').setAttribute('href', urlCustom[0]+'/products');
- document.getElementById('ord').setAttribute('href', urlCustom[0]+'/orders');
- 
  </script>
 </body>
 </html>

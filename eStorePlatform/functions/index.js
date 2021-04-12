@@ -17,6 +17,7 @@ const { signUpUser, signUpFinalUser } = require('./users')
 const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 const auth = require("firebase-admin");
+const { admin } = require("./admin");
 //const { getMaxListeners } = require("process");
 //const { request } = require("http");
 require("dotenv").config();
@@ -95,7 +96,7 @@ db.collection('client-users').get().then(snapshot => {
           });
       });
 
- 
+        
 
    db.collection('client-users').get().then(snapshot => {
     snapshot.docs.map(doc => {
@@ -134,13 +135,15 @@ db.collection('client-users').get().then(snapshot => {
             });
 });
 
+
+
 app.post('/login', loginUser);
 app.post('/signup', signUpUser);
 //app.post('/signupuser', signUpFinalUser);
 
 db.collection('client-users').get().then(snapshot => {
   snapshot.docs.map(doc => {
-  //  app.post('/' + doc.data().store +'/login', loginUser);
+   app.post('/' + doc.data().store +'/login', loginUser);
   });
 });
 

@@ -25,11 +25,11 @@
                 <p>Password</p>
                 <input type="password" name="password" id="pass" placeholder="Enter your password" required>
                 
-                <a href="#">forget password?</a>
+                <a id="reset" href="/forgetPassword.html">forget password?</a>
                 <a href="/signup" id="signup">Don't have account?</a>
-                
+                <input type="submit" id="Signin" name="sign in" value="Sign in">
             </form>
-            <input type="submit" id="Signin" name="sign in" value="Sign in">
+            
         </div> 
         
 
@@ -62,11 +62,25 @@ var firebaseConfig = {
     url = url.split('login');
     document.getElementById('signup').setAttribute('href', url[0]+'signupuser');
                    
-let email = document.getElementById('email').value;
+let email = document.getElementById('email');
 let pass = document.getElementById('pass').value;
 let IDuser;
+           
+            email.addEventListener('change', () => {
+                sessionStorage.setItem('email', email.value);
+            })
+            
+            document.getElementById('reset').addEventListener('click', () => {
+                var url = window.location.href;
+                url = url.split('login');
+                sessionStorage.setItem('url', url[0]);
+            })
 
-            localStorage.setItem('UserID', IDuser);
+            document.getElementById('signup').addEventListener('click', () => {
+                var url = window.location.href;
+                url = url.split('login');
+                sessionStorage.setItem('url', url[0]);
+            })
             </script>
     </body>
 </html>

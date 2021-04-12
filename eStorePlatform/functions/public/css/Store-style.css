@@ -332,6 +332,12 @@ td a{
     display: flex;
     justify-content: flex-end;
 }
+.subtot {
+    justify-content: flex-end;
+    display: flex;
+    margin-left: 90%;
+    ;
+}
 
 .total-price table{
     border-top: 3px solid #303030;

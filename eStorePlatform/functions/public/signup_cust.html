@@ -28,7 +28,7 @@
                 <input type="tel" name="tel" placeholder="Enter your number" required> 
 
 
-                <input type="submit" name="sign up" value="Sign up">
+                <input type="submit" id="signup" name="sign up" value="Sign up">
                 <input type="checkbox" name="checkbox" id="checkbox-1" required>
                 <p class="agree">I agree all statements in  <a href="#" class="term-service">Terms of service</a></p>
                 <a href="/loginuser" id="signin" class="signin">have an account?</a>
@@ -41,6 +41,12 @@
                     var url = window.location.href;
                     url = url.split('signupuser');
                     document.getElementById('signin').setAttribute('href', url[0]+'login');
+
+                    document.getElementById('signup').addEventListener('click', () => {
+                var url = window.location.href;
+                url = url.split('signupuser');
+               window.location = url+'login';
+            })
             </script>
     </body>
 </html>

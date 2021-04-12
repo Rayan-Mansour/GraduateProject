@@ -82,7 +82,8 @@
 
 function openCart(){
     let url = window.location.href
-        window.location = url + 'cart';
+    url = url.split('home');
+        window.location = url[0] + 'cart';
 }
 
 var menutm = document.getElementById('menuItem');
@@ -136,7 +137,7 @@ var firebaseConfig = {
                .catch(error => {
                    console.log(error.message);
                });
-      
+                       sessionStorage.removeItem('email')
                let url = window.location.href;
                url = url.split('home');
               window.location = url[0];

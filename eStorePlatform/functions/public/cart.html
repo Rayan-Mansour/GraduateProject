@@ -9,6 +9,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    .advir{
+        display: none;
+        position: fixed;
+        left: 45%;
+        top: 5%;
+        transform: translate(-50%, 5%);
+        border: 3px solid #999999;
+        z-index: 9;
+        background-color: #fff;
+        padding: 100px;
+        }
+        .advir #address, #city, #postal,#mobile{
+            border-radius: 5px;
+            margin-top: 50px;
+            position: relative;
+            background-color: rgb(158, 158, 158);
+        }
+        #address, #city, #postal,#mobile{
+            margin-left: 40px;
+        }
+</style>
 </head>
 <body>
 
@@ -21,87 +43,46 @@
             <nav>
                 <ul id="menuItem">
                 <li><a href="" id="home">Home</a></li>
-                <li><a href="" id="cont">Contact</a></li>
-                <li><a href="" id="signin">Sign in</a></li>
             </ul>
             </nav>
             <img onclick="openCart()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fcart.png?alt=media&token=5bb165c6-9b39-481e-9218-706c9e845484" style="height: 30px; width: 30px; cursor: pointer;"><span class="cart">0</span>
             <img class="menu-icon" onclick="menutogg()" src="https://firebasestorage.googleapis.com/v0/b/estoreplatform-2d6f7.appspot.com/o/Our-projects-photos%2Fmenu.png?alt=media&token=ff17647b-5d84-400e-a86d-65affa485e79">
         </div>
 
+        <div class="advir" id="closeSubmitWin" style="display: none; z-index: 1; border-radius: 9px;">
+            <h2>Address Info & Submit Order</h2>
+            <label>Address</label>
+      <input type="text" name="address" id="address" required><br>
+      <label>Which city</label>
+      <input type="text" name="city" id="city" required><br>
+      <label>Postal Code</label>
+      <input type="text" name="postal" id="postal" required><br>
+      <label>Mobile Number</label>
+      <button type="submit" class="btn" onclick="submitOrder()" >Submit</button>
+      <button type="submit" class="btn" onclick="cancel()" >cancel</button>
+
+        </div>
     </div>
 
     <div class="small-container cart-page">
-        <table>
+        <table class="cartX">
             <tr>
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="./category-1.jpg">
-                        <div>
-                            <p>Red helmet</p>
-                            <small>Price: 50.00$</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="./category-1.jpg">
-                        <div>
-                            <p>Red helmet</p>
-                            <small>Price: 50.00$</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="./category-1.jpg">
-                        <div>
-                            <p>Red helmet</p>
-                            <small>Price: 50.00$</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-        </table>
+                   </table>
 
         <div class="total-price">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$150.00</td>
-                   
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>$50.00</td>
-                </tr>
-                <tr>
+            <table > 
+                <tr class='cart-total'>
                     <td>Total</td>
-                    <td>$200.00</td>
+                    <td class='tot'></td>
                 </tr>
             </table>
+            
         </div>
+        <button class="btn subtot" onclick="openSubmit()">Submit</button>
     </div>
 
    <footer>
@@ -126,6 +107,22 @@
     
 <!-- js for toggle menu -->
 <script>
+     function openSubmit(){
+        if(localStorage.getItem('cartNumbers') === '0'){
+                alert('Cart is Empty!  try add some items in it')    
+        }
+        else {
+
+            document.getElementById('closeSubmitWin').style.display = 'block';
+        }
+        
+    }
+    
+    function cancel() {
+        document.getElementById('closeSubmitWin').style.display = 'none';
+       
+    }
+
 function openCart(){
     let url = window.location.href
         window.location = url;
@@ -178,9 +175,8 @@ function openCart(){
       console.log(x);
     const logotxt = document.getElementById('logo');
     const hometxt = document.getElementById('home');
-    const conttxt = document.getElementById('cont');
-    const signintxt = document.getElementById('signin');
-    const signuptxt = document.getElementById('signup');
+    
+  
     
         const change = function UserRet(logo, home){
     
@@ -196,7 +192,12 @@ function openCart(){
         if(doc.data().store == x[3]){
         
         logotxt.innerHTML = doc.data().store;
-        hometxt.setAttribute('href', doc.data().store);
+        if(sessionStorage.getItem('email')){
+            hometxt.setAttribute('href', '/'+doc.data().store+'/home');
+        } else {
+            hometxt.setAttribute('href', '/'+doc.data().store+'/');
+        }
+        
         //signuptxt.setAttribute('href', '/' + doc.data().store + '/signupuser');
         signintxt.setAttribute('href', '/' + doc.data().store + '/login');
         document.getElementById('tt').innerHTML = doc.data().store;
@@ -205,14 +206,7 @@ function openCart(){
     });
     });
     
-            firebase.firestore().collection('header-ad').get().then(snap => {
-                snap.docs.map(doc => {
-                    console.log(doc.data().adHeader) ;
-                    if(doc.data().store == x[3]){
-                        document.getElementById('headline').innerHTML = doc.data().adHeader;
-                    }
-                })
-            })
+           
     
     
            
@@ -220,28 +214,7 @@ function openCart(){
         firebase.firestore().collection('products').doc(x[3]).collection('products-store').get().then(snapshot => {
             let products = [];
       snapshot.docs.map(doc => {
-          console.log(doc.data().productName);
         
-       
-        
-        var imgURL = firebase.storage().ref('products/'+x[3]+'/'+doc.data().productName+'.jpg').getDownloadURL();
-      
-        var smallCont = document.querySelector('.small-container');
-    var row = document.querySelector('.rowNew');
-        
-        var col = document.createElement('div');
-        col.classList.add('col-4');
-        col.setAttribute('id', doc.data().productName);
-        var imgProduct = document.createElement('img');
-        var name = document.createElement('p');
-      var desc = document.createElement('p');
-      var price = document.createElement('p');
-      var qunt = document.createElement('p');
-      var button = document.createElement('button');
-      button.innerHTML = 'add to Cart';
-      button.classList.add('add-cart');
-      button.classList.add('btn');
-      button.type = 'submit';
       
       
       var arr = firebase.firestore().collection('products').doc(x[3]).collection('products-store').get().then(snapshot => {
@@ -257,19 +230,6 @@ function openCart(){
          
          
       
-              imgURL.then((url) => {
-                  imgProduct.src = url;
-            col.firstChild.before(imgProduct);
-            
-        })
-        
-          col.appendChild(name).innerHTML = 'Product Name: '+'<b>'+doc.data().productName+'</b>';
-          col.appendChild(desc).innerHTML = 'Description: '+'<b>'+doc.data().productDesc+'</b>';
-          col.appendChild(qunt).innerHTML = 'Quantity: '+'<b>'+doc.data().productQuantity+' Left</b>';
-          col.appendChild(price).innerHTML = 'Price: '+'<b>$'+doc.data().productPrice+'.00</b>';
-          col.appendChild(button);
-          row.appendChild(col);
-          smallCont.appendChild(row);
                  
        
           
@@ -350,15 +310,139 @@ function openCart(){
     
     function displayCart() {
            let cartItems = localStorage.getItem('productsInCart');
-           cartItems = JSON.parse(cartItems);
-           
-           console.log(cartItems);
+           let cartTot = localStorage.getItem('totalCost');
+             cartItems = JSON.parse(cartItems);
+           let productCont = document.querySelector('.cartX');
+           let cartTotal = document.querySelector('.cart-total');
 
+           console.log(cartItems);
+            if(cartItems && productCont) {
+                productCont.innerHTML;
+                Object.values(cartItems).map(item => {
+            var tr = document.createElement('tr');
+            var div = document.createElement('div');
+            var td = document.createElement('td');
+            var divInside = document.createElement('div');
+            div.classList.add('cart-info');
+            tr.setAttribute('id', item.name);
+            var imgProduct = document.createElement('img');
+            var name = document.createElement('p');
+            var price = document.createElement('small');
+            var qunt = document.createElement('td');
+            var subtotal =document.createElement('td');
+            var delPrdct = document.createElement('button');
+            var br = document.createElement('br')
+            delPrdct.classList.add(item.name);
+            delPrdct.classList.add('btn');
+            delPrdct.innerHTML = 'remove';
+  
+            delPrdct.onclick = function(e)  {
+                document.getElementById(item.name).innerHTML = '';
+                                    
+                                         
+                if(cartItems[item.name].name === item.name) {
+                    var qun = item.inCart;
+                    delete cartItems[item.name];
+                    console.log(cartItems);
+                    cartItems = JSON.stringify(cartItems);
+                    localStorage.setItem('productsInCart', cartItems);
+                    let productNumbers = localStorage.getItem('cartNumbers');
+                        productNumbers = parseInt(productNumbers);
+                        productNumbers = productNumbers - qun;
+                        localStorage.setItem('cartNumbers', productNumbers);
+                        document.querySelector('.cart').textContent = productNumbers;
+                }
+                                    
+            }
+            
+                    var imgURL = firebase.storage().ref('products/'+x[3]+'/'+item.name+'.jpg').getDownloadURL();
+                    var _getUrlImg;
+                    imgURL.then((url) => {
+                        imgProduct.src = url;
+                        div.firstChild.before(imgProduct);
+                    });
+                    
+                    divInside.appendChild(name).innerHTML = item.name;
+                    divInside.appendChild(price).innerHTML = 'Price: $'+item.price;
+                    divInside.appendChild(br);
+                    divInside.appendChild(delPrdct);
+                    div.appendChild(divInside);
+                    td.appendChild(div);
+                    tr.appendChild(td);
+                    tr.appendChild(qunt).innerHTML = item.inCart;
+                    tr.appendChild(subtotal).innerHTML = '$'+item.price*item.inCart+'.00';
+                    productCont.appendChild(tr);
+                });
+
+                var cart_total = document.querySelector('.tot');
+                cart_total.innerHTML = '$'+localStorage.getItem('totalCost')+'.00';
+                    
+            }
+
+            
     }
 
+    function submitOrder() {
+        var Eemail;
+        let cartItems = JSON.parse(localStorage.getItem('productsInCart')) ;
+        var orderNumber = new Date().valueOf();
+        Eemail = sessionStorage.getItem('email');
+        if(Eemail) {
+            firebase.firestore().collection('products').doc(x[3]).collection('products-store').get().then(snap => {
+           snap.docs.map(doc => {
+               if(doc.data().productQuantity != 0){
+                     Object.values(cartItems).map(item => {
+                    if(doc.data().productName === item.name){
+                        var totQun = doc.data().productQuantity - item.inCart;
+                        firebase.firestore().collection('products').doc(x[3]).collection('products-store').doc(doc.id).update({
+                    productQuantity: totQun
+                })
+                    }
+                
+            })
+                            document.getElementById('closeSubmitWin').style.display = 'none';
+
+                firebase.firestore().collection('client-users').doc(x[3]).collection('Orders').add({
+                    createAt: new Date().toISOString(),
+                    email: Eemail,
+                    totalCost: localStorage.getItem('totalCost'),
+                    numberOfItems: localStorage.getItem('cartNumbers'),
+                    product: localStorage.getItem('productsInCart'),
+                    orderNumber: orderNumber
+                }).then(() => {
+                    alert('Order is submited, Thank you for order, please visit us again!');
+                    if(Eemail){
+                        var urlUnSigned = x[0].split('cart');
+                        window.location = urlUnSigned[0]+'home';
+                    }
+                    
+                    localStorage.clear();
+                    
+                });
+
+               } else {
+                   alert('some item is out of Stock!');
+               }
+           
+        })
+       })
+      //  console.log(typeof Eemail);
+      
+       
+
+        } else {
+            alert('you have to sign in before');
+            var urlUnSigned = x[0].split('cart');
+               window.location = urlUnSigned[0]+'login';
+        }
+       
+    }
 
     onLoadCartNumbers();
     displayCart();
+
+
+
         </script>
      
 </body>
